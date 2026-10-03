@@ -2246,6 +2246,301 @@ button {
     }
 }
 
+// u(n): n px on the 1320px design canvas, scaled with the container
+@function u($n) {
+    @return unquote("calc(#{$n} * var(--u))");
+}
+
+// fs(n, min): scaled font size that never drops below min
+@function fs($n, $min: 12px) {
+    @return unquote("max(#{$min}, calc(#{$n} * var(--u)))");
+}
+
+.use-cases-container {
+    .cases {
+        container-type: inline-size;
+        margin-top: 30px;
+    }
+
+    // ---------- mobile / tablet: simple stacked list ----------
+    .cases-stage {
+        --u: 1px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .tracer {
+        display: none;
+    }
+
+    .img-container {
+        width: min(320px, 80%);
+        margin: 0 auto 8px;
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .case {
+        display: grid;
+        grid-template-columns: 64px 1fr;
+        column-gap: 14px;
+        align-items: center;
+        padding: 14px 20px 14px 14px;
+        border-radius: 40px;
+        background: #afddff;
+        transition:
+            background-color 0.45s ease,
+            width 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+            box-shadow 0.45s ease;
+
+        .icon-container {
+            width: 64px;
+            height: 64px;
+            padding: 18px;
+            border-radius: 50%;
+            background: #fff;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+
+        .text-container {
+            min-width: 0;
+
+            h3 {
+                margin: 0 0 4px;
+                font-size: 18px;
+                font-weight: 600;
+                line-height: 1.4;
+                color: #000;
+                transition: color 0.45s ease;
+            }
+
+            p {
+                margin: 0;
+                font-size: 14px;
+                color: $primary-color;
+                transition: color 0.45s ease;
+            }
+        }
+
+        // View More: hidden until the case is active
+        .case-cta {
+            grid-column: 2;
+            justify-self: start;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            max-height: 0;
+            padding: 0 18px;
+            margin-top: 0;
+            overflow: hidden;
+            opacity: 0;
+            white-space: nowrap;
+            border-radius: 6px;
+            background: #0f9b4e;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            transition:
+                max-height 0.4s ease,
+                padding 0.4s ease,
+                margin 0.4s ease,
+                opacity 0.35s ease 0.1s;
+        }
+
+        &.is-active {
+            background: #1b3a7c;
+            box-shadow: 0 12px 30px rgba(27, 58, 124, 0.25);
+
+            h3,
+            p {
+                color: #fff;
+            }
+
+            .case-cta {
+                max-height: 44px;
+                padding: 10px 18px;
+                margin-top: 10px;
+                opacity: 1;
+            }
+        }
+    }
+
+    // ---------- desktop: scaled design canvas ----------
+    @media (min-width: 992px) {
+        .cases-stage {
+            --u: min(1px, calc(100cqw / 1320));
+            display: block;
+            width: u(1320);
+            height: u(872);
+            margin-inline: auto;
+        }
+
+        .tracer {
+            display: block;
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .tracer-line {
+            fill: none;
+            stroke: #1b3a7c;
+            stroke-width: 1.5;
+            stroke-dasharray: 2 5;
+            stroke-linecap: round;
+        }
+
+        .tracer-dot {
+            fill: #1b3a7c;
+        }
+
+        .tracer-halo {
+            fill: rgba(63, 102, 196, 0.28);
+            transform-box: fill-box;
+            transform-origin: center;
+            animation: uc-pulse 2s ease-in-out infinite;
+        }
+
+        // the circles graphic, centered on the arc's center
+        .img-container {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: u(446);
+            margin: 0;
+            transform: translateY(-50%);
+        }
+
+        .case {
+            position: absolute;
+            display: flex;
+            gap: u(12);
+            width: u(660);
+            padding: u(16) u(32) u(16) u(16);
+            border-radius: u(81);
+
+            &.is-active {
+                width: u(790);
+                z-index: 2;
+            }
+
+            .icon-container {
+                flex-shrink: 0;
+                width: u(110);
+                height: u(110);
+                padding: u(35);
+            }
+
+            .text-container {
+                flex: 1;
+
+                h3 {
+                    margin: 0 0 u(5);
+                    font-size: fs(24, 15px);
+                    line-height: 1.5;
+                }
+
+                p {
+                    font-size: fs(16, 12px);
+                }
+            }
+
+            .case-cta {
+                flex: none;
+                gap: u(6);
+                max-width: 0;
+                max-height: none;
+                padding: u(12) 0;
+                margin: 0;
+                border-radius: u(6);
+                font-size: fs(15, 12px);
+                transform: translateX(-12px);
+                transition:
+                    max-width 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                    padding 0.5s ease,
+                    margin 0.5s ease,
+                    opacity 0.35s ease 0.15s,
+                    transform 0.5s ease 0.1s;
+            }
+
+            &.is-active .case-cta {
+                max-width: u(160);
+                max-height: none;
+                padding: 7px 12px;
+                margin: 0 0 0 u(12);
+                transform: none;
+            }
+        }
+
+        // positions follow the arc (top / left on the 1320 x 872 canvas)
+        .case-1 {
+            top: 0;
+            left: u(230);
+        }
+
+        .case-2 {
+            top: u(180);
+            left: u(500);
+        }
+
+        .case-3 {
+            top: u(360);
+            left: u(600);
+        }
+
+        .case-4 {
+            top: u(540);
+            left: u(500);
+        }
+
+        .case-5 {
+            top: u(730);
+            left: u(230);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+        .case,
+        .case .case-cta {
+            transition: none;
+        }
+
+        .tracer-halo {
+            animation: none;
+        }
+    }
+}
+
+@keyframes uc-pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.9;
+    }
+
+    50% {
+        transform: scale(1.3);
+        opacity: 0.4;
+    }
+}
+
 
 
 

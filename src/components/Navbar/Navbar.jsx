@@ -135,7 +135,7 @@ const Navbar = () => {
           </div>
 
           <div className="nav-btns">
-            <Link href={"/contact"} className="cta-btn">
+            <Link href={"/#"} className="cta-btn">
               Contact Us
             </Link>
           </div>
