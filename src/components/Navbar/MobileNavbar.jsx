@@ -32,12 +32,6 @@ const MobileSubMenu = ({
         {items.map((item) => (
           <Link href={item.href} key={item.id} onClick={closeMenu}>
             <li className="sub-menu">
-              {/* icon slot — empty until the icon assets are dropped in */}
-              {item.icon ? (
-                <img src={item.icon} alt="" />
-              ) : (
-                <span className="icon-placeholder" />
-              )}
               <div className="sub-menu-text">
                 <p>{item.title}</p>
                 {item.description ? <span>{item.description}</span> : null}

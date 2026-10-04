@@ -1,6 +1,7 @@
 import Head from "next/head";
 import "../styles/global.css";
-import Navbar from "@/components/Navbar/Navbar";
+import Navbar from "@/components/navbar/Navbar";
+import Footer from "@/components/footer/Footer";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -8,7 +9,11 @@ export default function App({ Component, pageProps }) {
       <Head>
         {/* Preconnect for better performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="true"
+        />
 
         {/* Favicons */}
         <link
@@ -41,6 +46,7 @@ export default function App({ Component, pageProps }) {
       <main>
         <Component {...pageProps} />
       </main>
+      <Footer />
     </>
   );
 }
