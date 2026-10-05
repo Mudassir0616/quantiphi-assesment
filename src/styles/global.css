@@ -597,29 +597,31 @@ button {
 }
 
 .banner-container {
-  height: 110vh;
+  min-height: auto;
   width: 100%;
   background: linear-gradient(180deg, #01020F 0%, #04125B 100%);
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 160px 0 40px;
 }
 @media screen and (max-width: 768px) {
   .banner-container {
-    height: 80vh;
+    padding: 120px 0 40px;
   }
 }
 .banner-container .container {
   position: relative;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 .banner-container .container .banner-title {
-  position: absolute;
-  top: 20%;
   max-width: 900px;
   z-index: 10;
 }
 @media screen and (max-width: 1400px) {
   .banner-container .container .banner-title {
-    top: 25%;
     max-width: 700px;
   }
 }
@@ -641,14 +643,17 @@ button {
   animation-delay: calc(var(--i) * 0.3s + 0.2s);
 }
 .banner-container .container .cta-btn {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
+  align-self: center;
+  margin-top: 48px;
   text-wrap: nowrap;
   cursor: pointer;
   border: none;
   z-index: 10;
+}
+@media screen and (max-width: 768px) {
+  .banner-container .container .cta-btn {
+    margin-top: 32px;
+  }
 }
 .banner-container .container {
   /* ------------------------------------------------------------
@@ -658,10 +663,14 @@ button {
   ------------------------------------------------------------ */
 }
 .banner-container .container .formula {
-  position: relative;
   width: 100%;
-  top: calc(20% + 200px);
+  margin-top: 64px;
   z-index: 5;
+}
+@media screen and (max-width: 1400px) {
+  .banner-container .container .formula {
+    margin-top: 40px;
+  }
 }
 .banner-container .container .formula .stage {
   position: relative;
