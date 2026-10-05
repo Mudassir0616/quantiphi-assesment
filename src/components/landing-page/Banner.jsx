@@ -7,7 +7,7 @@ const title = "Own your enterprise intelligence. Compound your edge.";
 
 /* ---------- Timeline (seconds) ---------- */
 const START = 1.4; // when the first cube begins (title words run ~0.2s -> 3s)
-const STEP = 0.9; // time between each service
+const STEP = 0.5; // time between each service
 
 /* ---------- Stage geometry (design px, scaled to fit) ---------- */
 const STAGE_W = 1400;
@@ -291,8 +291,8 @@ const Formula = () => {
           className="cube-wrap cube-wrap--result"
           style={{ right: 20, top: -35, "--t": tEnd + 0.7 }}
         >
-          <Cube size={160} variant="wire">
-            <Cube size={84} variant="solid" className="cube--core" />
+          <Cube size={150} variant="wire">
+            <Cube size={94} variant="solid" className="cube--core" />
           </Cube>
         </div>
         <p

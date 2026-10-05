@@ -97,12 +97,12 @@ const MobileNavbar = ({ check, openSubMenu, toggleSubMenu, closeMenu }) => {
           closeMenu={closeMenu}
         />
 
-        <Link href="/careers" onClick={closeMenu}>
+        <Link href="/#" onClick={closeMenu}>
           <li>Careers</li>
         </Link>
 
         <li className="mobile-cta">
-          <Link href="/contact" className="cta-btn" onClick={closeMenu}>
+          <Link href="/#" className="cta-btn" onClick={closeMenu}>
             Contact Us
           </Link>
         </li>

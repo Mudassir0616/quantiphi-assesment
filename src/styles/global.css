@@ -180,7 +180,7 @@ button {
 .heading h2 {
   width: 100%;
   font-size: clamp(32px, 4vw, 48px);
-  margin: clamp(6px, 1vw, 10px) 0 clamp(12px, 1.5vw, 16px);
+  margin: 12px 0 16px;
   color: #223D80;
   font-weight: 600;
   line-height: 1.2;
@@ -600,6 +600,7 @@ button {
   height: 110vh;
   width: 100%;
   background: linear-gradient(180deg, #01020F 0%, #04125B 100%);
+  overflow: hidden;
 }
 @media screen and (max-width: 768px) {
   .banner-container {
@@ -619,13 +620,14 @@ button {
 @media screen and (max-width: 1400px) {
   .banner-container .container .banner-title {
     top: 25%;
+    max-width: 700px;
   }
 }
 .banner-container .container .banner-title h1 {
-  font-size: clamp(32px, 3vw, 48px);
+  font-size: clamp(28px, 3vw, 48px);
   text-transform: capitalize;
   margin: 0;
-  line-height: 1.2;
+  line-height: 1.4;
   font-weight: 700;
   color: #00874C;
 }
@@ -806,7 +808,7 @@ button {
 }
 .banner-container .container .formula .cube-wrap--result .cube--wire {
   animation: none;
-  transform: rotateX(-14deg) rotateY(calc(20deg + var(--a)));
+  transform: rotateX(-14deg) rotateY(calc(40deg + var(--a)));
 }
 .banner-container .container .formula .cube-wrap--result .cube--core {
   transform: rotateY(calc(var(--a) * -2));
@@ -911,7 +913,7 @@ button {
 .cube--core {
   position: absolute;
   left: 33px;
-  top: 44px;
+  top: 36px;
   transform: none;
   animation: none !important;
 }
@@ -1047,110 +1049,6 @@ button {
     animation: none !important;
   }
 }
-/* ---------------- Cube geometry (true 3D) ---------------- */
-.cube {
-  --s: 120px;
-  --half: calc(var(--s) / 2);
-  --tilt: rotateX(-14deg) rotateY(20deg);
-  position: relative;
-  width: var(--s);
-  height: var(--s);
-  transform-style: preserve-3d;
-  transform: var(--tilt);
-}
-.cube .face {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  box-sizing: border-box;
-  border-radius: calc(var(--s) * 0.1);
-  backface-visibility: hidden;
-}
-.cube .face svg {
-  width: 58%;
-  height: 58%;
-  color: #fff;
-  filter: drop-shadow(0 0 6px rgba(190, 215, 255, 0.7));
-}
-.cube .face--front {
-  transform: translateZ(var(--half));
-}
-.cube .face--back {
-  transform: rotateY(180deg) translateZ(var(--half));
-}
-.cube .face--right {
-  transform: rotateY(90deg) translateZ(var(--half));
-}
-.cube .face--left {
-  transform: rotateY(-90deg) translateZ(var(--half));
-}
-.cube .face--top {
-  transform: rotateX(90deg) translateZ(var(--half));
-}
-.cube .face--bottom {
-  transform: rotateX(-90deg) translateZ(var(--half));
-}
-.cube {
-  /* ice / glass */
-}
-.cube--glass .face {
-  border: 1.5px solid rgba(170, 195, 255, 0.55);
-  background: linear-gradient(145deg, rgba(110, 140, 255, 0.42), rgba(14, 34, 140, 0.7));
-  box-shadow: inset 0 0 22px rgba(150, 180, 255, 0.35), 0 0 18px rgba(40, 80, 255, 0.25);
-}
-.cube--glass .face--front::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(125deg, rgba(255, 255, 255, 0.28) 0%, transparent 38%);
-  pointer-events: none;
-}
-.cube--glass .face--top {
-  background: linear-gradient(180deg, rgba(210, 225, 255, 0.55), rgba(120, 150, 255, 0.35));
-}
-.cube--glass .face--left {
-  background: linear-gradient(90deg, rgba(150, 175, 255, 0.5), rgba(40, 70, 190, 0.6));
-}
-.cube--glass .face--right {
-  background: linear-gradient(270deg, rgba(10, 25, 110, 0.85), rgba(30, 55, 170, 0.6));
-}
-.cube {
-  /* wireframe shell for the result */
-}
-.cube--wire .face {
-  border: 1.5px solid rgba(70, 255, 180, 0.75);
-  background: rgba(0, 224, 143, 0.05);
-  box-shadow: inset 0 0 24px rgba(0, 224, 143, 0.12);
-  border-radius: 2px;
-}
-.cube {
-  /* solid emerald core */
-}
-.cube--solid .face {
-  border-radius: 3px;
-  border: 1px solid rgba(190, 255, 225, 0.5);
-  background: linear-gradient(145deg, #3dffb2, #00b86f);
-  box-shadow: inset 0 0 18px rgba(255, 255, 255, 0.25);
-}
-.cube--solid .face--top {
-  background: linear-gradient(180deg, #a6ffd9, #3dffb2);
-}
-.cube--solid .face--left {
-  background: linear-gradient(90deg, #62ffc0, #00c97c);
-}
-.cube--solid .face--right {
-  background: linear-gradient(270deg, #009a5e, #00b86f);
-}
-.cube--core {
-  position: absolute;
-  left: 33px;
-  top: 44px;
-  transform: none;
-  animation: none !important;
-}
-
 /* ---------------- Keyframes ---------------- */
 @keyframes wordUp {
   from {
@@ -1282,7 +1180,6 @@ button {
   background: #D5EDFF;
   box-shadow: inset 0px 34px 154px rgba(255, 255, 255, 0.07);
   border-radius: 30px;
-  min-height: 420px;
   overflow: hidden;
 }
 .advantages-container .advantages-grid .card .card-title {
@@ -1606,12 +1503,7 @@ button {
 }
 @media screen and (max-width: 480px) {
   .advantages-container .advantages-grid .agentic-card .ag-stage {
-    transform: scale(0.72);
-  }
-}
-@media screen and (max-width: 360px) {
-  .advantages-container .advantages-grid .agentic-card .ag-stage {
-    transform: scale(0.6);
+    transform: scale(0.9);
   }
 }
 .advantages-container .advantages-grid .agentic-card .ag-ai {
@@ -1833,7 +1725,7 @@ button {
 }
 @media screen and (max-width: 480px) {
   .advantages-container .advantages-grid .comparison-card .cp-stage {
-    transform: scale(0.72);
+    transform: scale(0.9);
   }
 }
 @media screen and (max-width: 360px) {
@@ -1917,7 +1809,7 @@ button {
   will-change: transform, opacity;
   animation: cp-chip var(--cp-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
 }
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1700px) {
   .advantages-container .advantages-grid .comparison-card .cp-chip {
     font-size: 14px;
     padding: 8px 16px;
@@ -2077,12 +1969,7 @@ button {
 }
 @media screen and (max-width: 480px) {
   .advantages-container .advantages-grid .learning-card .lc-stage {
-    transform: scale(0.72);
-  }
-}
-@media screen and (max-width: 360px) {
-  .advantages-container .advantages-grid .learning-card .lc-stage {
-    transform: scale(0.6);
+    transform: scale(0.9);
   }
 }
 .advantages-container .advantages-grid .learning-card .lc-flow {
@@ -2352,12 +2239,7 @@ button {
 }
 @media screen and (max-width: 480px) {
   .advantages-container .advantages-grid .seamless-card .sm-stage {
-    transform: scale(0.72);
-  }
-}
-@media screen and (max-width: 360px) {
-  .advantages-container .advantages-grid .seamless-card .sm-stage {
-    transform: scale(0.6);
+    transform: scale(0.8);
   }
 }
 .advantages-container .advantages-grid .seamless-card .sm-logo {
@@ -2569,11 +2451,11 @@ button {
   height: auto;
 }
 .use-cases-container .case {
-  display: grid;
-  grid-template-columns: 64px 1fr;
-  column-gap: 14px;
-  align-items: center;
-  padding: 14px 20px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 20px;
   border-radius: 40px;
   background: #afddff;
   transition: background-color 0.45s ease, width 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease;
@@ -2613,8 +2495,7 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  max-height: 0;
-  padding: 0 18px;
+  padding: 10px 18px;
   margin-top: 0;
   overflow: hidden;
   opacity: 0;
@@ -2626,6 +2507,11 @@ button {
   font-weight: 600;
   transition: max-height 0.4s ease, padding 0.4s ease, margin 0.4s ease, opacity 0.35s ease 0.1s;
 }
+@media screen and (max-width: 768px) {
+  .use-cases-container .case .case-cta {
+    padding: 8px 16px;
+  }
+}
 .use-cases-container .case.is-active {
   background: #1b3a7c;
   box-shadow: 0 12px 30px rgba(27, 58, 124, 0.25);
@@ -2635,9 +2521,6 @@ button {
   color: #fff;
 }
 .use-cases-container .case.is-active .case-cta {
-  max-height: 44px;
-  padding: 10px 18px;
-  margin-top: 10px;
   opacity: 1;
 }
 @media (min-width: 992px) {
@@ -2685,6 +2568,8 @@ button {
   .use-cases-container .case {
     position: absolute;
     display: flex;
+    align-items: center;
+    flex-direction: row;
     gap: calc(12 * var(--u));
     width: calc(660 * var(--u));
     padding: calc(16 * var(--u)) calc(32 * var(--u)) calc(16 * var(--u)) calc(16 * var(--u));
@@ -2787,13 +2672,13 @@ button {
   flex-wrap: wrap;
   flex-direction: row;
   gap: 20px;
-  padding: 50px 0;
+  padding: 50px 0 80px;
 }
 @media screen and (max-width: 768px) {
   .footer-container .container {
     flex-direction: column;
     gap: 40px;
-    padding: 20px 0;
+    padding: 50px 0;
   }
 }
 .footer-container .container .company-details {
