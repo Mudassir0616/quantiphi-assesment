@@ -1943,6 +1943,23 @@ $ice: rgba(170, 195, 255, 1);
             .ag-stage {
                 position: absolute;
                 inset: 0;
+
+                @media screen and (max-width: 1400px) {
+                    transform: scale(0.75);
+                    transform-origin: top center;
+                }
+
+                @media screen and (max-width: 900px) {
+                    transform: scale(1);
+                }
+
+                @media screen and (max-width: 480px) {
+                    transform: scale(0.72);
+                }
+
+                @media screen and (max-width: 360px) {
+                    transform: scale(0.6);
+                }
             }
 
             // ---------- AI circle ----------
@@ -2224,6 +2241,23 @@ $ice: rgba(170, 195, 255, 1);
             .cp-stage {
                 position: absolute;
                 inset: 0;
+
+                @media screen and (max-width: 1400px) {
+                    transform: scale(0.75);
+                    transform-origin: top center;
+                }
+
+                @media screen and (max-width: 900px) {
+                    transform: scale(1);
+                }
+
+                @media screen and (max-width: 480px) {
+                    transform: scale(0.72);
+                }
+
+                @media screen and (max-width: 360px) {
+                    transform: scale(0.6);
+                }
             }
 
             // ---------- logo ----------
@@ -2515,6 +2549,28 @@ $ice: rgba(170, 195, 255, 1);
             .lc-stage {
                 position: absolute;
                 inset: 0;
+
+                @media screen and (max-width: 1500px) {
+                    transform: scale(0.90);
+                    transform-origin: top center;
+                }
+
+                @media screen and (max-width: 1200px) {
+                    transform: scale(0.75);
+                    transform-origin: top center;
+                }
+
+                @media screen and (max-width: 900px) {
+                    transform: scale(1);
+                }
+
+                @media screen and (max-width: 480px) {
+                    transform: scale(0.72);
+                }
+
+                @media screen and (max-width: 360px) {
+                    transform: scale(0.6);
+                }
             }
 
             // ---------- flow row ----------
@@ -2655,6 +2711,25 @@ $ice: rgba(170, 195, 255, 1);
                 border-left: 1.5px dotted var(--lc-navy);
                 border-bottom-left-radius: 14px;
 
+                // the card narrows faster than these fixed offsets at the
+                // 2-column breakpoint, which collapses the curve's width to
+                // 0 (it's sized via left+right, so the ancestor's transform
+                // scale on .lc-stage can't rescue it) — pull the offsets in
+                @media screen and (max-width: 1400px) {
+                    left: 16px;
+                    right: calc(50% + 70px);
+                }
+
+                @media screen and (max-width: 900px) {
+                    left: 34px;
+                    right: calc(50% + 139px);
+                }
+
+                @media screen and (max-width: 480px) {
+                    left: 10px;
+                    right: calc(50% + 55px);
+                }
+
                 &::before {
                     left: -5px;
                 }
@@ -2665,6 +2740,21 @@ $ice: rgba(170, 195, 255, 1);
                 left: calc(50% + 139px);
                 border-right: 1.5px dotted var(--lc-navy);
                 border-bottom-right-radius: 14px;
+
+                @media screen and (max-width: 1400px) {
+                    right: 16px;
+                    left: calc(50% + 70px);
+                }
+
+                @media screen and (max-width: 900px) {
+                    right: 34px;
+                    left: calc(50% + 139px);
+                }
+
+                @media screen and (max-width: 480px) {
+                    right: 10px;
+                    left: calc(50% + 55px);
+                }
 
                 &::before {
                     right: -5px;
@@ -2785,6 +2875,28 @@ $ice: rgba(170, 195, 255, 1);
             .sm-stage {
                 position: absolute;
                 inset: 0;
+
+                @media screen and (max-width: 1600px) {
+                    transform: scale(0.95);
+                    transform-origin: top center;
+                }
+
+                @media screen and (max-width: 1200px) {
+                    transform: scale(0.75);
+                    transform-origin: top center;
+                }
+
+                @media screen and (max-width: 900px) {
+                    transform: scale(1);
+                }
+
+                @media screen and (max-width: 480px) {
+                    transform: scale(0.72);
+                }
+
+                @media screen and (max-width: 360px) {
+                    transform: scale(0.6);
+                }
             }
 
             // ---------- logo ----------

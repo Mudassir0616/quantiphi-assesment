@@ -12,7 +12,8 @@ const STEP = 0.9; // time between each service
 /* ---------- Stage geometry (design px, scaled to fit) ---------- */
 const STAGE_W = 1400;
 const STAGE_H = 500;
-const CUBE = 120;
+const CUBE = 120; // layout slot width (keeps cube spacing/curve/node math unchanged)
+const CUBE_VISUAL = 98; // actual rendered cube size, centered in its slot
 const PITCH = 196;
 const X0 = 84; // space between the opening bracket and the first cube
 const LABEL_TOP = 160; // gap between cube and its label
@@ -237,8 +238,15 @@ const Formula = () => {
           const left = X0 + i * PITCH;
           return (
             <div key={i}>
-              <div className="cube-wrap" style={{ left, top: 0, "--t": t }}>
-                <Cube icon={<Icon />} />
+              <div
+                className="cube-wrap"
+                style={{
+                  left: left + (CUBE - CUBE_VISUAL) / 2,
+                  top: (CUBE - CUBE_VISUAL) / 2,
+                  "--t": t,
+                }}
+              >
+                <Cube size={CUBE_VISUAL} icon={<Icon />} />
               </div>
 
               {i < STEPS.length - 1 && (
@@ -281,9 +289,9 @@ const Formula = () => {
         />
         <div
           className="cube-wrap cube-wrap--result"
-          style={{ right: 20, top: -15, "--t": tEnd + 0.7 }}
+          style={{ right: 20, top: -35, "--t": tEnd + 0.7 }}
         >
-          <Cube size={150} variant="wire">
+          <Cube size={160} variant="wire">
             <Cube size={84} variant="solid" className="cube--core" />
           </Cube>
         </div>
